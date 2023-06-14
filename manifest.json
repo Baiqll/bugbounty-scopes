@@ -1,0 +1,23 @@
+{
+    "name": "bugbounty-scopes",
+    "description": "一键提取赏金目标范围",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "./src/background.js",
+        "type":"module"
+     },
+    "permissions": ["tabs", "http://*/*"],
+    "commands": {
+        "drawScope": {
+           "description": "提取赏金目标"
+        }
+    },
+    "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["src/content-script.js"],
+          "run_at": "document_end"
+        }
+     ]
+}
